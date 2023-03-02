@@ -37,5 +37,12 @@ namespace CreatureMonster.View.AuthRegWindows
             registration.Show();
             Close();
         }
+
+        private void TextBlock_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordWindow password = new PasswordWindow();
+            password.Show();
+            Close();
+        }
     }
 }

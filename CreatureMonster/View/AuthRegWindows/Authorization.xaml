@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="1.2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
@@ -39,10 +39,14 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <TextBlock Text="Введите пароль"/>
-            <PasswordBox x:Name="PassTb" Height="160" Margin="0 30 0 0" VerticalContentAlignment="Center" 
+            <StackPanel>
+                <TextBlock Text="Введите пароль"/>
+                <PasswordBox x:Name="PassTb" Height="160" Margin="0 30 0 0" VerticalContentAlignment="Center" 
                          MaxLength="8" FontSize="50">
-            </PasswordBox>
+                </PasswordBox>
+
+                <TextBlock Text="Забыли пароль?" DataContextChanged="TextBlock_DataContextChanged" FontSize="30" HorizontalAlignment="Right" Foreground="#FF2697B8" TextDecorations="Underline" FontWeight="Bold"/>
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="3">
