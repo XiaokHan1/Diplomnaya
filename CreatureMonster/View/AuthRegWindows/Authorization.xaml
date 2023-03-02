@@ -20,26 +20,35 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Авторизация"/>
+            </StackPanel>
+        </Grid>
+
         <Grid Grid.Row="1">
             <TextBlock Text="Введите логин"/>
-            <TextBox x:Name="LogTb" Margin="0 30 0 0" Height="160"/>
+            <TextBox x:Name="LogTb" Height="160" FontSize="50" Margin="0 30 0 0"
+                     VerticalContentAlignment="Center" MaxLength="8">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20" />
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
         </Grid>
 
         <Grid Grid.Row="2">
             <TextBlock Text="Введите пароль"/>
-            <PasswordBox x:Name="PassTb" Margin="0 30 0 0" Height="160" Template="{StaticResource passwordbox}"/>
+            <PasswordBox x:Name="PassTb" Height="160" Margin="0 30 0 0" VerticalContentAlignment="Center" 
+                         MaxLength="8" FontSize="50">
+            </PasswordBox>
         </Grid>
 
         <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="AddBtn" Height="100" Width="240" Content="Войти" Style="{DynamicResource btnBlue}" Click="AddBtn_Click"/>
                 <Button x:Name="RegBtn" Margin="250 0 0 0" Height="100" Width="280" Content="Регистрация" Style="{DynamicResource btnBlue}" Click="RegBtn_Click"/>
-            </StackPanel>
-        </Grid>
-
-        <Grid>
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Авторизация"/>
             </StackPanel>
         </Grid>
     </Grid>

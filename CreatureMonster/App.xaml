@@ -31,32 +31,6 @@
             </Setter>
         </Style>
 
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="40" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="White"
-                                CornerRadius="18"
-                                BorderThickness="3"
-                                Padding="5"
-                                BorderBrush="#000">
-                            
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <ControlTemplate x:Key="passwordbox" TargetType="PasswordBox">
-            <Border Background="{TemplateBinding Background}" 
-                    BorderBrush="#000"
-                    BorderThickness="3" 
-                    CornerRadius="18">
-            </Border>
-        </ControlTemplate>
-
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="40" />
