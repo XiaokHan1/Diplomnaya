@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CreatureMonster.View.AuthRegWindows"
         mc:Ignorable="d"
-        Title="Authorization" Height="900" Width="1600" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Authorization" Height="900" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF129936"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <TextBlock Text="Введите логин"/>
+            <TextBox x:Name="LogTb" Margin="0 30 0 0" Height="160"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <TextBlock Text="Введите пароль"/>
+            <PasswordBox x:Name="PassTb" Margin="0 30 0 0" Height="160" Template="{StaticResource passwordbox}"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="AddBtn" Height="100" Width="240" Content="Войти" Style="{DynamicResource btnBlue}" Click="AddBtn_Click"/>
+                <Button x:Name="RegBtn" Margin="250 0 0 0" Height="100" Width="280" Content="Регистрация" Style="{DynamicResource btnBlue}" Click="RegBtn_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Авторизация"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
