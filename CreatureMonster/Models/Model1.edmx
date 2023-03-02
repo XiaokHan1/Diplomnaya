@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище user24Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FCs" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Body">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Creature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_body" Type="int" Nullable="false" />
+          <Property Name="Id_tail" Type="int" Nullable="false" />
+          <Property Name="Id_head" Type="int" Nullable="false" />
+          <Property Name="Id_legs" Type="int" Nullable="false" />
+          <Property Name="Name_creature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="Id_authorization" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Head">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="IdType_head" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Legs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="IdType_legs" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="IdType_tail" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_legs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_tail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Creature_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_authorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Body">
+          <End Role="Body" Type="Self.Body" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Body">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_body" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Head">
+          <End Role="Head" Type="Self.Head" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Head">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_head" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Legs">
+          <End Role="Legs" Type="Self.Legs" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Legs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_legs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Tail">
+          <End Role="Tail" Type="Self.Tail" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_tail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Head_TypeHead">
+          <End Role="TypeHead" Type="Self.TypeHead" Multiplicity="1" />
+          <End Role="Head" Type="Self.Head" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeHead">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Head">
+              <PropertyRef Name="IdType_head" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Legs_Type_legs">
+          <End Role="Type_legs" Type="Self.Type_legs" Multiplicity="1" />
+          <End Role="Legs" Type="Self.Legs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_legs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Legs">
+              <PropertyRef Name="IdType_legs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tail_Type_tail">
+          <End Role="Type_tail" Type="Self.Type_tail" Multiplicity="1" />
+          <End Role="Tail" Type="Self.Tail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_tail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tail">
+              <PropertyRef Name="IdType_tail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище user24ModelContainer">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Body" EntityType="Self.Body" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Creature" EntityType="Self.Creature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Head" EntityType="Self.Head" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Legs" EntityType="Self.Legs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tail" EntityType="Self.Tail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_legs" EntityType="Self.Type_legs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_tail" EntityType="Self.Type_tail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeHead" EntityType="Self.TypeHead" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Creature_Authorization" Association="Self.FK_Creature_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Body" Association="Self.FK_Creature_Body">
+            <End Role="Body" EntitySet="Body" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Head" Association="Self.FK_Creature_Head">
+            <End Role="Head" EntitySet="Head" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Legs" Association="Self.FK_Creature_Legs">
+            <End Role="Legs" EntitySet="Legs" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Tail" Association="Self.FK_Creature_Tail">
+            <End Role="Tail" EntitySet="Tail" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Head_TypeHead" Association="Self.FK_Head_TypeHead">
+            <End Role="TypeHead" EntitySet="TypeHead" />
+            <End Role="Head" EntitySet="Head" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Legs_Type_legs" Association="Self.FK_Legs_Type_legs">
+            <End Role="Type_legs" EntitySet="Type_legs" />
+            <End Role="Legs" EntitySet="Legs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tail_Type_tail" Association="Self.FK_Tail_Type_tail">
+            <End Role="Type_tail" EntitySet="Type_tail" />
+            <End Role="Tail" EntitySet="Tail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="user24Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FCs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Authorization" FromRole="Authorization" ToRole="Creature" />
+        </EntityType>
+        <EntityType Name="Body">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Body" FromRole="Body" ToRole="Creature" />
+        </EntityType>
+        <EntityType Name="Creature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_body" Type="Int32" Nullable="false" />
+          <Property Name="Id_tail" Type="Int32" Nullable="false" />
+          <Property Name="Id_head" Type="Int32" Nullable="false" />
+          <Property Name="Id_legs" Type="Int32" Nullable="false" />
+          <Property Name="Name_creature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Id_authorization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorization" Relationship="Self.FK_Creature_Authorization" FromRole="Creature" ToRole="Authorization" />
+          <NavigationProperty Name="Body" Relationship="Self.FK_Creature_Body" FromRole="Creature" ToRole="Body" />
+          <NavigationProperty Name="Head" Relationship="Self.FK_Creature_Head" FromRole="Creature" ToRole="Head" />
+          <NavigationProperty Name="Legs" Relationship="Self.FK_Creature_Legs" FromRole="Creature" ToRole="Legs" />
+          <NavigationProperty Name="Tail" Relationship="Self.FK_Creature_Tail" FromRole="Creature" ToRole="Tail" />
+        </EntityType>
+        <EntityType Name="Head">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="IdType_head" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Head" FromRole="Head" ToRole="Creature" />
+          <NavigationProperty Name="TypeHead" Relationship="Self.FK_Head_TypeHead" FromRole="Head" ToRole="TypeHead" />
+        </EntityType>
+        <EntityType Name="Legs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="IdType_legs" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Legs" FromRole="Legs" ToRole="Creature" />
+          <NavigationProperty Name="Type_legs" Relationship="Self.FK_Legs_Type_legs" FromRole="Legs" ToRole="Type_legs" />
+        </EntityType>
+        <EntityType Name="Tail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="IdType_tail" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Tail" FromRole="Tail" ToRole="Creature" />
+          <NavigationProperty Name="Type_tail" Relationship="Self.FK_Tail_Type_tail" FromRole="Tail" ToRole="Type_tail" />
+        </EntityType>
+        <EntityType Name="Type_legs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Legs" Relationship="Self.FK_Legs_Type_legs" FromRole="Type_legs" ToRole="Legs" />
+        </EntityType>
+        <EntityType Name="Type_tail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tail" Relationship="Self.FK_Tail_Type_tail" FromRole="Type_tail" ToRole="Tail" />
+        </EntityType>
+        <EntityType Name="TypeHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Head" Relationship="Self.FK_Head_TypeHead" FromRole="TypeHead" ToRole="Head" />
+        </EntityType>
+        <Association Name="FK_Creature_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_authorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Body">
+          <End Role="Body" Type="Self.Body" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Body">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_body" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Head">
+          <End Role="Head" Type="Self.Head" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Head">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_head" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Legs">
+          <End Role="Legs" Type="Self.Legs" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Legs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_legs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creature_Tail">
+          <End Role="Tail" Type="Self.Tail" Multiplicity="1" />
+          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Creature">
+              <PropertyRef Name="Id_tail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Head_TypeHead">
+          <End Role="TypeHead" Type="Self.TypeHead" Multiplicity="1" />
+          <End Role="Head" Type="Self.Head" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeHead">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Head">
+              <PropertyRef Name="IdType_head" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Legs_Type_legs">
+          <End Role="Type_legs" Type="Self.Type_legs" Multiplicity="1" />
+          <End Role="Legs" Type="Self.Legs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_legs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Legs">
+              <PropertyRef Name="IdType_legs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tail_Type_tail">
+          <End Role="Type_tail" Type="Self.Type_tail" Multiplicity="1" />
+          <End Role="Tail" Type="Self.Tail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_tail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tail">
+              <PropertyRef Name="IdType_tail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="user24Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
+          <EntitySet Name="Body" EntityType="Self.Body" />
+          <EntitySet Name="Creature" EntityType="Self.Creature" />
+          <EntitySet Name="Head" EntityType="Self.Head" />
+          <EntitySet Name="Legs" EntityType="Self.Legs" />
+          <EntitySet Name="Tail" EntityType="Self.Tail" />
+          <EntitySet Name="Type_legs" EntityType="Self.Type_legs" />
+          <EntitySet Name="Type_tail" EntityType="Self.Type_tail" />
+          <EntitySet Name="TypeHead" EntityType="Self.TypeHead" />
+          <AssociationSet Name="FK_Creature_Authorization" Association="Self.FK_Creature_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Body" Association="Self.FK_Creature_Body">
+            <End Role="Body" EntitySet="Body" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Head" Association="Self.FK_Creature_Head">
+            <End Role="Head" EntitySet="Head" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Legs" Association="Self.FK_Creature_Legs">
+            <End Role="Legs" EntitySet="Legs" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Tail" Association="Self.FK_Creature_Tail">
+            <End Role="Tail" EntitySet="Tail" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Head_TypeHead" Association="Self.FK_Head_TypeHead">
+            <End Role="TypeHead" EntitySet="TypeHead" />
+            <End Role="Head" EntitySet="Head" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Legs_Type_legs" Association="Self.FK_Legs_Type_legs">
+            <End Role="Type_legs" EntitySet="Type_legs" />
+            <End Role="Legs" EntitySet="Legs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tail_Type_tail" Association="Self.FK_Tail_Type_tail">
+            <End Role="Type_tail" EntitySet="Type_tail" />
+            <End Role="Tail" EntitySet="Tail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user24ModelContainer" CdmEntityContainer="user24Entities">
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="user24Model.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FCs" ColumnName="FCs" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Body">
+            <EntityTypeMapping TypeName="user24Model.Body">
+              <MappingFragment StoreEntitySet="Body">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Creature">
+            <EntityTypeMapping TypeName="user24Model.Creature">
+              <MappingFragment StoreEntitySet="Creature">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_body" ColumnName="Id_body" />
+                <ScalarProperty Name="Id_tail" ColumnName="Id_tail" />
+                <ScalarProperty Name="Id_head" ColumnName="Id_head" />
+                <ScalarProperty Name="Id_legs" ColumnName="Id_legs" />
+                <ScalarProperty Name="Name_creature" ColumnName="Name_creature" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id_authorization" ColumnName="Id_authorization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Head">
+            <EntityTypeMapping TypeName="user24Model.Head">
+              <MappingFragment StoreEntitySet="Head">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IdType_head" ColumnName="IdType_head" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Legs">
+            <EntityTypeMapping TypeName="user24Model.Legs">
+              <MappingFragment StoreEntitySet="Legs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IdType_legs" ColumnName="IdType_legs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tail">
+            <EntityTypeMapping TypeName="user24Model.Tail">
+              <MappingFragment StoreEntitySet="Tail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IdType_tail" ColumnName="IdType_tail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_legs">
+            <EntityTypeMapping TypeName="user24Model.Type_legs">
+              <MappingFragment StoreEntitySet="Type_legs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_tail">
+            <EntityTypeMapping TypeName="user24Model.Type_tail">
+              <MappingFragment StoreEntitySet="Type_tail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeHead">
+            <EntityTypeMapping TypeName="user24Model.TypeHead">
+              <MappingFragment StoreEntitySet="TypeHead">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
