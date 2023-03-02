@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CreatureMonster.View.Windows"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="900" Width="1000">
+        Title="AuthWindow" Height="900" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Grid>
         <Grid.Background>
@@ -34,8 +34,9 @@
         </Grid>
 
         <Grid Grid.Row="3">
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="AddBtn" Height="100" Width="240" Content="Войти" Style="{DynamicResource btnBlue}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="AddBtn" Height="100" Width="240" Content="Войти" Style="{DynamicResource btnBlue}" Click="AddBtn_Click"/>
+                <Button x:Name="RegBtn" Margin="250 0 0 0" Height="100" Width="280" Content="Регистрация" Style="{DynamicResource btnBlue}" Click="RegBtn_Click"/>
             </StackPanel>
         </Grid>
 

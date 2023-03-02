@@ -23,5 +23,19 @@ namespace CreatureMonster.View.Windows
         {
             InitializeComponent();
         }
+
+        private void RegBtn_Click(object sender, RoutedEventArgs e)
+        {
+            View.AuthRegWindows.Registration registration = new AuthRegWindows.Registration();
+            registration.Show();
+            Close();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            View.AuthRegWindows.Authorization authorization = new AuthRegWindows.Authorization();
+            authorization.Show();
+            Close();
+        }
     }
 }

@@ -69,6 +69,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\BD.cs" />
+    <Compile Include="View\AuthRegWindows\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthRegWindows\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
@@ -173,6 +179,14 @@
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\AuthRegWindows\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthRegWindows\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\AuthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
