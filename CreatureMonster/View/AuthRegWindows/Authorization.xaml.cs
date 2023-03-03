@@ -26,9 +26,21 @@ namespace CreatureMonster.View.AuthRegWindows
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            Windows.StartsWindow starts = new Windows.StartsWindow();
-            starts.Show();
-            Close();
+            var qwe = Helpers.BD.user.Authorization.Where(i => i.Nickname == LogTb.Text && i.Password == PassTb.Password).FirstOrDefault();
+            if (qwe == null)
+            {
+                t1.Text = "Введите логин*";
+                t1.Foreground = Brushes.Red;
+                t2.Text = "Введите пароль*";
+                t2.Foreground = Brushes.Red;
+                
+            }
+            else
+            {
+                Windows.StartsWindow starts = new Windows.StartsWindow();
+                starts.Show();
+                Close();
+            }
         }
 
         private void RegBtn_Click(object sender, RoutedEventArgs e)
@@ -43,6 +55,22 @@ namespace CreatureMonster.View.AuthRegWindows
             PasswordWindow password = new PasswordWindow();
             password.Show();
             Close();
+        }
+
+        private void LogTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            t1.Text = "Введите логин";
+            t1.Foreground = Brushes.Black;
+            t2.Text = "Введите пароль";
+            t2.Foreground = Brushes.Black;
+        }
+
+        private void PassTb_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            t1.Text = "Введите логин";
+            t1.Foreground = Brushes.Black;
+            t2.Text = "Введите пароль";
+            t2.Foreground = Brushes.Black;
         }
     }
 }

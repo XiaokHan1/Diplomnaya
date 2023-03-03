@@ -27,9 +27,9 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBlock Text="Введите логин"/>
+            <TextBlock x:Name="t1" Text="Введите логин"/>
             <TextBox x:Name="LogTb" Height="160" FontSize="50" Margin="0 30 0 0"
-                     VerticalContentAlignment="Center" MaxLength="8">
+                     VerticalContentAlignment="Center" MaxLength="8" TextChanged="LogTb_TextChanged">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20" />
@@ -40,9 +40,9 @@
 
         <Grid Grid.Row="2">
             <StackPanel>
-                <TextBlock Text="Введите пароль"/>
+                <TextBlock x:Name="t2" Text="Введите пароль"/>
                 <PasswordBox x:Name="PassTb" Height="160" Margin="0 30 0 0" VerticalContentAlignment="Center" 
-                         MaxLength="8" FontSize="50">
+                         MaxLength="8" FontSize="50" PasswordChanged="PassTb_PasswordChanged">
                 </PasswordBox>
 
                 <TextBlock Text="Забыли пароль?" DataContextChanged="TextBlock_DataContextChanged" FontSize="30" HorizontalAlignment="Right" Foreground="#FF2697B8" TextDecorations="Underline" FontWeight="Bold"/>

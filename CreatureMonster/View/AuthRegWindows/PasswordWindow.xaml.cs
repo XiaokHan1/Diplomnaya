@@ -23,5 +23,11 @@ namespace CreatureMonster.View.AuthRegWindows
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var a = Helpers.BD.user.Authorization.Where(i => i.FCs == NameTb.Text && i.Nickname == NickTb.Text).FirstOrDefault();
+
+        }
     }
 }

@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CreatureMonster.View.AuthRegWindows"
         mc:Ignorable="d"
-        Title="Registration" Height="900" Width="1600" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Registration" Height="900" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF129936"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2.5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
     </Grid>
 </Window>
