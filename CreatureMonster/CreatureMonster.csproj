@@ -75,6 +75,9 @@
     <Compile Include="View\AuthRegWindows\PasswordWindow.xaml.cs">
       <DependentUpon>PasswordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AuthRegWindows\PasswordWindow2.xaml.cs">
+      <DependentUpon>PasswordWindow2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AuthRegWindows\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AuthRegWindows\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthRegWindows\PasswordWindow2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

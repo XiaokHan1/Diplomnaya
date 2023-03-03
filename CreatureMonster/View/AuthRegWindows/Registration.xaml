@@ -15,9 +15,48 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="2.5*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="4.5*" />
+            <RowDefinition Height="1.2*" />
         </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="50"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.6*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <StackPanel>
+                    <TextBlock x:Name="t1" Margin="15 0 0 65" Text="Введите ФИО"/>
+                    <TextBlock x:Name="t2" Margin="15 0 0 65" Text="Придумайте логин"/>
+                    <TextBlock x:Name="t3" Margin="15 0 0 65" Text="Придумайте пароль"/>
+                    <TextBlock x:Name="t4" Margin="15 0 0 65" Text="Подтвердите пароль"/>
+                    <TextBlock Margin="15 0 0 65" Text="Добавьте фото"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <TextBox FontSize="50" VerticalContentAlignment="Center" Name="FcsTb" Height="70" Margin="15 0 0 50"/>
+                    <TextBox FontSize="50" VerticalContentAlignment="Center" Name="LogTb" Height="70" Margin="15 0 0 50"/>
+                    <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb" Height="70" Margin="15 0 0 50"/>
+                    <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb2" Height="70" Margin="15 0 0 50" PasswordChanged="PassTb2_PasswordChanged"/>
+                    <TextBox Height="70" Margin="15 0 0 50" FontSize="50" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="RegBtn" Margin="0 0 290 0" Content="Добавить" Width="240" Height="80" Style="{StaticResource btnBlue}" Click="RegBtn_Click"/>
+                <Button x:Name="EndBtn" Content="Назад" Width="240" Height="80" Style="{StaticResource btnBlue}" Click="EndBtn_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
