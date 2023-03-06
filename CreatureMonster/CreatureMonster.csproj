@@ -81,6 +81,18 @@
     <Compile Include="View\AuthRegWindows\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\AccountPage.xaml.cs">
+      <DependentUpon>AccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Histori.xaml.cs">
+      <DependentUpon>Histori.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ProfilWindow.xaml.cs">
+      <DependentUpon>ProfilWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\StartsWindow.xaml.cs">
       <DependentUpon>StartsWindow.xaml</DependentUpon>
     </Compile>
@@ -172,6 +184,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="View\Pages\Fon.jpg" />
     <Resource Include="Resources\png-clipart.png" />
     <Resource Include="Resources\1626321301_25-kartinkin-com-p-anime-paren-sumasshedshii-anime-krasivo-30.jpg" />
     <Resource Include="Resources\Fon.jpg" />
@@ -181,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\AuthRegWindows\Authorization.xaml">
@@ -197,6 +209,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AuthRegWindows\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Histori.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ProfilWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

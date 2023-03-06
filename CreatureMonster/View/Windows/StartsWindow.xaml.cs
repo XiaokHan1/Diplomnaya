@@ -75,5 +75,12 @@ namespace CreatureMonster.View.Windows
             Helpers.BD.user.SaveChanges();
             MessageBox.Show("Yes");
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Pages.ProfilWindow profilWindow = new Pages.ProfilWindow();
+            profilWindow.Show();
+            Close();
+        }
     }
 }
