@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище user24Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище user24Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="Id" />
@@ -13,7 +13,7 @@
           <Property Name="FCs" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Body">
           <Key>
@@ -223,30 +223,72 @@
             <End Role="Tail" EntitySet="Tail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="user24Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="user24Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorization" EntityType="user24Model.Authorization" />
+          <EntitySet Name="Body" EntityType="user24Model.Body" />
+          <EntitySet Name="Creature" EntityType="user24Model.Creature" />
+          <EntitySet Name="Head" EntityType="user24Model.Head" />
+          <EntitySet Name="Legs" EntityType="user24Model.Legs" />
+          <EntitySet Name="Tail" EntityType="user24Model.Tail" />
+          <EntitySet Name="Type_legs" EntityType="user24Model.Type_legs" />
+          <EntitySet Name="Type_tail" EntityType="user24Model.Type_tail" />
+          <EntitySet Name="TypeHead" EntityType="user24Model.TypeHead" />
+          <AssociationSet Name="FK_Creature_Authorization" Association="user24Model.FK_Creature_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Body" Association="user24Model.FK_Creature_Body">
+            <End Role="Body" EntitySet="Body" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Head" Association="user24Model.FK_Creature_Head">
+            <End Role="Head" EntitySet="Head" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Legs" Association="user24Model.FK_Creature_Legs">
+            <End Role="Legs" EntitySet="Legs" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creature_Tail" Association="user24Model.FK_Creature_Tail">
+            <End Role="Tail" EntitySet="Tail" />
+            <End Role="Creature" EntitySet="Creature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Head_TypeHead" Association="user24Model.FK_Head_TypeHead">
+            <End Role="TypeHead" EntitySet="TypeHead" />
+            <End Role="Head" EntitySet="Head" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Legs_Type_legs" Association="user24Model.FK_Legs_Type_legs">
+            <End Role="Type_legs" EntitySet="Type_legs" />
+            <End Role="Legs" EntitySet="Legs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tail_Type_tail" Association="user24Model.FK_Tail_Type_tail">
+            <End Role="Type_tail" EntitySet="Type_tail" />
+            <End Role="Tail" EntitySet="Tail" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FCs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
-          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Authorization" FromRole="Authorization" ToRole="Creature" />
+          <Property Name="FCs" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nickname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Creature" Relationship="user24Model.FK_Creature_Authorization" FromRole="Authorization" ToRole="Creature" />
         </EntityType>
         <EntityType Name="Body">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
-          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Body" FromRole="Body" ToRole="Creature" />
+          <NavigationProperty Name="Creature" Relationship="user24Model.FK_Creature_Body" FromRole="Body" ToRole="Creature" />
         </EntityType>
         <EntityType Name="Creature">
           <Key>
@@ -257,75 +299,75 @@
           <Property Name="Id_tail" Type="Int32" Nullable="false" />
           <Property Name="Id_head" Type="Int32" Nullable="false" />
           <Property Name="Id_legs" Type="Int32" Nullable="false" />
-          <Property Name="Name_creature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name_creature" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
           <Property Name="Id_authorization" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Authorization" Relationship="Self.FK_Creature_Authorization" FromRole="Creature" ToRole="Authorization" />
-          <NavigationProperty Name="Body" Relationship="Self.FK_Creature_Body" FromRole="Creature" ToRole="Body" />
-          <NavigationProperty Name="Head" Relationship="Self.FK_Creature_Head" FromRole="Creature" ToRole="Head" />
-          <NavigationProperty Name="Legs" Relationship="Self.FK_Creature_Legs" FromRole="Creature" ToRole="Legs" />
-          <NavigationProperty Name="Tail" Relationship="Self.FK_Creature_Tail" FromRole="Creature" ToRole="Tail" />
+          <NavigationProperty Name="Authorization" Relationship="user24Model.FK_Creature_Authorization" FromRole="Creature" ToRole="Authorization" />
+          <NavigationProperty Name="Body" Relationship="user24Model.FK_Creature_Body" FromRole="Creature" ToRole="Body" />
+          <NavigationProperty Name="Head" Relationship="user24Model.FK_Creature_Head" FromRole="Creature" ToRole="Head" />
+          <NavigationProperty Name="Legs" Relationship="user24Model.FK_Creature_Legs" FromRole="Creature" ToRole="Legs" />
+          <NavigationProperty Name="Tail" Relationship="user24Model.FK_Creature_Tail" FromRole="Creature" ToRole="Tail" />
         </EntityType>
         <EntityType Name="Head">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
           <Property Name="IdType_head" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Head" FromRole="Head" ToRole="Creature" />
-          <NavigationProperty Name="TypeHead" Relationship="Self.FK_Head_TypeHead" FromRole="Head" ToRole="TypeHead" />
+          <NavigationProperty Name="Creature" Relationship="user24Model.FK_Creature_Head" FromRole="Head" ToRole="Creature" />
+          <NavigationProperty Name="TypeHead" Relationship="user24Model.FK_Head_TypeHead" FromRole="Head" ToRole="TypeHead" />
         </EntityType>
         <EntityType Name="Legs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
           <Property Name="IdType_legs" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Legs" FromRole="Legs" ToRole="Creature" />
-          <NavigationProperty Name="Type_legs" Relationship="Self.FK_Legs_Type_legs" FromRole="Legs" ToRole="Type_legs" />
+          <NavigationProperty Name="Creature" Relationship="user24Model.FK_Creature_Legs" FromRole="Legs" ToRole="Creature" />
+          <NavigationProperty Name="Type_legs" Relationship="user24Model.FK_Legs_Type_legs" FromRole="Legs" ToRole="Type_legs" />
         </EntityType>
         <EntityType Name="Tail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
           <Property Name="IdType_tail" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Creature" Relationship="Self.FK_Creature_Tail" FromRole="Tail" ToRole="Creature" />
-          <NavigationProperty Name="Type_tail" Relationship="Self.FK_Tail_Type_tail" FromRole="Tail" ToRole="Type_tail" />
+          <NavigationProperty Name="Creature" Relationship="user24Model.FK_Creature_Tail" FromRole="Tail" ToRole="Creature" />
+          <NavigationProperty Name="Type_tail" Relationship="user24Model.FK_Tail_Type_tail" FromRole="Tail" ToRole="Type_tail" />
         </EntityType>
         <EntityType Name="Type_legs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Legs" Relationship="Self.FK_Legs_Type_legs" FromRole="Type_legs" ToRole="Legs" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Legs" Relationship="user24Model.FK_Legs_Type_legs" FromRole="Type_legs" ToRole="Legs" />
         </EntityType>
         <EntityType Name="Type_tail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Tail" Relationship="Self.FK_Tail_Type_tail" FromRole="Type_tail" ToRole="Tail" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tail" Relationship="user24Model.FK_Tail_Type_tail" FromRole="Type_tail" ToRole="Tail" />
         </EntityType>
         <EntityType Name="TypeHead">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Head" Relationship="Self.FK_Head_TypeHead" FromRole="TypeHead" ToRole="Head" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Head" Relationship="user24Model.FK_Head_TypeHead" FromRole="TypeHead" ToRole="Head" />
         </EntityType>
         <Association Name="FK_Creature_Authorization">
-          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
-          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <End Type="user24Model.Authorization" Role="Authorization" Multiplicity="1" />
+          <End Type="user24Model.Creature" Role="Creature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Authorization">
               <PropertyRef Name="Id" />
@@ -336,8 +378,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Creature_Body">
-          <End Role="Body" Type="Self.Body" Multiplicity="1" />
-          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <End Type="user24Model.Body" Role="Body" Multiplicity="1" />
+          <End Type="user24Model.Creature" Role="Creature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Body">
               <PropertyRef Name="Id" />
@@ -348,8 +390,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Creature_Head">
-          <End Role="Head" Type="Self.Head" Multiplicity="1" />
-          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <End Type="user24Model.Head" Role="Head" Multiplicity="1" />
+          <End Type="user24Model.Creature" Role="Creature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Head">
               <PropertyRef Name="Id" />
@@ -360,8 +402,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Creature_Legs">
-          <End Role="Legs" Type="Self.Legs" Multiplicity="1" />
-          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <End Type="user24Model.Legs" Role="Legs" Multiplicity="1" />
+          <End Type="user24Model.Creature" Role="Creature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Legs">
               <PropertyRef Name="Id" />
@@ -372,8 +414,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Creature_Tail">
-          <End Role="Tail" Type="Self.Tail" Multiplicity="1" />
-          <End Role="Creature" Type="Self.Creature" Multiplicity="*" />
+          <End Type="user24Model.Tail" Role="Tail" Multiplicity="1" />
+          <End Type="user24Model.Creature" Role="Creature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tail">
               <PropertyRef Name="Id" />
@@ -384,8 +426,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Head_TypeHead">
-          <End Role="TypeHead" Type="Self.TypeHead" Multiplicity="1" />
-          <End Role="Head" Type="Self.Head" Multiplicity="*" />
+          <End Type="user24Model.TypeHead" Role="TypeHead" Multiplicity="1" />
+          <End Type="user24Model.Head" Role="Head" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeHead">
               <PropertyRef Name="Id" />
@@ -396,8 +438,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Legs_Type_legs">
-          <End Role="Type_legs" Type="Self.Type_legs" Multiplicity="1" />
-          <End Role="Legs" Type="Self.Legs" Multiplicity="*" />
+          <End Type="user24Model.Type_legs" Role="Type_legs" Multiplicity="1" />
+          <End Type="user24Model.Legs" Role="Legs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type_legs">
               <PropertyRef Name="Id" />
@@ -408,8 +450,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tail_Type_tail">
-          <End Role="Type_tail" Type="Self.Type_tail" Multiplicity="1" />
-          <End Role="Tail" Type="Self.Tail" Multiplicity="*" />
+          <End Type="user24Model.Type_tail" Role="Type_tail" Multiplicity="1" />
+          <End Type="user24Model.Tail" Role="Tail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type_tail">
               <PropertyRef Name="Id" />
@@ -419,49 +461,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="user24Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
-          <EntitySet Name="Body" EntityType="Self.Body" />
-          <EntitySet Name="Creature" EntityType="Self.Creature" />
-          <EntitySet Name="Head" EntityType="Self.Head" />
-          <EntitySet Name="Legs" EntityType="Self.Legs" />
-          <EntitySet Name="Tail" EntityType="Self.Tail" />
-          <EntitySet Name="Type_legs" EntityType="Self.Type_legs" />
-          <EntitySet Name="Type_tail" EntityType="Self.Type_tail" />
-          <EntitySet Name="TypeHead" EntityType="Self.TypeHead" />
-          <AssociationSet Name="FK_Creature_Authorization" Association="Self.FK_Creature_Authorization">
-            <End Role="Authorization" EntitySet="Authorization" />
-            <End Role="Creature" EntitySet="Creature" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Creature_Body" Association="Self.FK_Creature_Body">
-            <End Role="Body" EntitySet="Body" />
-            <End Role="Creature" EntitySet="Creature" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Creature_Head" Association="Self.FK_Creature_Head">
-            <End Role="Head" EntitySet="Head" />
-            <End Role="Creature" EntitySet="Creature" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Creature_Legs" Association="Self.FK_Creature_Legs">
-            <End Role="Legs" EntitySet="Legs" />
-            <End Role="Creature" EntitySet="Creature" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Creature_Tail" Association="Self.FK_Creature_Tail">
-            <End Role="Tail" EntitySet="Tail" />
-            <End Role="Creature" EntitySet="Creature" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Head_TypeHead" Association="Self.FK_Head_TypeHead">
-            <End Role="TypeHead" EntitySet="TypeHead" />
-            <End Role="Head" EntitySet="Head" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Legs_Type_legs" Association="Self.FK_Legs_Type_legs">
-            <End Role="Type_legs" EntitySet="Type_legs" />
-            <End Role="Legs" EntitySet="Legs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tail_Type_tail" Association="Self.FK_Tail_Type_tail">
-            <End Role="Type_tail" EntitySet="Type_tail" />
-            <End Role="Tail" EntitySet="Tail" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -471,88 +470,88 @@
           <EntitySetMapping Name="Authorization">
             <EntityTypeMapping TypeName="user24Model.Authorization">
               <MappingFragment StoreEntitySet="Authorization">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FCs" ColumnName="FCs" />
-                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="FCs" ColumnName="FCs" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Body">
             <EntityTypeMapping TypeName="user24Model.Body">
               <MappingFragment StoreEntitySet="Body">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Creature">
             <EntityTypeMapping TypeName="user24Model.Creature">
               <MappingFragment StoreEntitySet="Creature">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_body" ColumnName="Id_body" />
-                <ScalarProperty Name="Id_tail" ColumnName="Id_tail" />
-                <ScalarProperty Name="Id_head" ColumnName="Id_head" />
-                <ScalarProperty Name="Id_legs" ColumnName="Id_legs" />
-                <ScalarProperty Name="Name_creature" ColumnName="Name_creature" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id_authorization" ColumnName="Id_authorization" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name_creature" ColumnName="Name_creature" />
+                <ScalarProperty Name="Id_legs" ColumnName="Id_legs" />
+                <ScalarProperty Name="Id_head" ColumnName="Id_head" />
+                <ScalarProperty Name="Id_tail" ColumnName="Id_tail" />
+                <ScalarProperty Name="Id_body" ColumnName="Id_body" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Head">
             <EntityTypeMapping TypeName="user24Model.Head">
               <MappingFragment StoreEntitySet="Head">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IdType_head" ColumnName="IdType_head" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Legs">
             <EntityTypeMapping TypeName="user24Model.Legs">
               <MappingFragment StoreEntitySet="Legs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IdType_legs" ColumnName="IdType_legs" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tail">
             <EntityTypeMapping TypeName="user24Model.Tail">
               <MappingFragment StoreEntitySet="Tail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IdType_tail" ColumnName="IdType_tail" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type_legs">
             <EntityTypeMapping TypeName="user24Model.Type_legs">
               <MappingFragment StoreEntitySet="Type_legs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type_tail">
             <EntityTypeMapping TypeName="user24Model.Type_tail">
               <MappingFragment StoreEntitySet="Type_tail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeHead">
             <EntityTypeMapping TypeName="user24Model.TypeHead">
               <MappingFragment StoreEntitySet="TypeHead">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

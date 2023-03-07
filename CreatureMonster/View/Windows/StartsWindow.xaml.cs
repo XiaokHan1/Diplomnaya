@@ -25,8 +25,8 @@ namespace CreatureMonster.View.Windows
             Text1.DataContext = Helpers.BD.user.Authorization.ToList();
             Text2.DataContext = Helpers.BD.user.Authorization.ToList();
 
-            Cmb1.SelectedValuePath= "Id";
-            Cmb1.DisplayMemberPath = "Name";
+            //Cmb1.SelectedValuePath= "Id";
+            //Cmb1.DisplayMemberPath = "Name";
             Cmb1.ItemsSource = Helpers.BD.user.Body.ToList();
 
             Cmb4.SelectedValuePath = "Id";
@@ -40,6 +40,8 @@ namespace CreatureMonster.View.Windows
             Cmb3.SelectedValuePath = "Id";
             Cmb3.DisplayMemberPath = "Name";
             Cmb3.ItemsSource = Helpers.BD.user.Legs.ToList();
+
+            Btn1.DataContext = Helpers.BD.user.Authorization.ToList();
 
         }
 
@@ -56,10 +58,9 @@ namespace CreatureMonster.View.Windows
             if (string.IsNullOrWhiteSpace(NameTb.Text))
                 mes += t1.Foreground = Brushes.Red;
 
-            if(mes == null)
+            if(mes != "")
             {
                 mes = "";
-                MessageBox.Show(mes);
                 return;
             }
             Models.Creature creature = new Models.Creature()

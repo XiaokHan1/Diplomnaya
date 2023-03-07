@@ -47,7 +47,7 @@
                     <TextBox FontSize="50" VerticalContentAlignment="Center" Name="LogTb" Height="70" Margin="15 0 0 50"/>
                     <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb" Height="70" Margin="15 0 0 50"/>
                     <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb2" Height="70" Margin="15 0 0 50" PasswordChanged="PassTb2_PasswordChanged"/>
-                    <TextBox Height="70" Margin="15 0 0 50" FontSize="50" VerticalContentAlignment="Center"/>
+                    <Button Name="Btn" Height="70" Margin="15 0 0 50" FontSize="50" VerticalContentAlignment="Center" Click="Btn_Click"/>
                 </StackPanel>
             </Grid>
 

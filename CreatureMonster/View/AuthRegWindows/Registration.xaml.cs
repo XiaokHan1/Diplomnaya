@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +54,9 @@ namespace CreatureMonster.View.AuthRegWindows
             {
                 FCs = FcsTb.Text,
                 Nickname = LogTb.Text,
-                Password = PassTb.Password
+                Password = PassTb.Password,
+                Photo = fot
+                
             };
             Helpers.BD.user.Authorization.Add(authorization);
             Helpers.BD.user.SaveChanges();
@@ -75,6 +79,18 @@ namespace CreatureMonster.View.AuthRegWindows
                 PassTb2.Background = Brushes.LightGreen;
                 PassTb2.BorderBrush = Brushes.Green;
             }
+        }
+
+        public byte[] fot;
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+
+            var q = openFileDialog.FileName;
+            fot = File.ReadAllBytes(q);
+            
         }
     }
 }

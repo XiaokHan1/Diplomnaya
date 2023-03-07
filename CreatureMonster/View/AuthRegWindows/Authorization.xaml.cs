@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -23,6 +24,11 @@ namespace CreatureMonster.View.AuthRegWindows
         public Authorization()
         {
             InitializeComponent();
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.From = 500;
+            doubleAnimation.To = 1000;
+            doubleAnimation.Duration = TimeSpan.FromSeconds(1);
+            win.BeginAnimation(Window.WidthProperty, doubleAnimation);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
