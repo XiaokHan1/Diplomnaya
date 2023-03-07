@@ -50,24 +50,32 @@ namespace CreatureMonster.View.AuthRegWindows
                 mes = "";
                 return;
             }
-            Models.Authorization authorization = new Models.Authorization()
+
+            var q = Helpers.BD.user.Authorization.Where(i => i.Nickname == LogTb.Text).FirstOrDefault();
+            if (q == null)
             {
-                FCs = FcsTb.Text,
-                Nickname = LogTb.Text,
-                Password = PassTb.Password,
-                Photo = fot
-                
-            };
-            Helpers.BD.user.Authorization.Add(authorization);
-            Helpers.BD.user.SaveChanges();
-            AuthRegWindows.Authorization authorization1 = new Authorization();
-            authorization1.Show();
-            Close();
+                Models.Authorization authorization = new Models.Authorization()
+                {
+                    FCs = FcsTb.Text,
+                    Nickname = LogTb.Text,
+                    Password = PassTb.Password,
+                    Photo = fot
+                };
+                Helpers.BD.user.Authorization.Add(authorization);
+                Helpers.BD.user.SaveChanges();
+                AuthRegWindows.Authorization authorization1 = new Authorization();
+                authorization1.Show();
+                Close();
+            }
+            else
+            {
+                t21.Text = "Придумайте другой логин";
+            }
         }
 
         private void PassTb2_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if(PassTb.Password != PassTb2.Password)
+            if (PassTb.Password != PassTb2.Password)
             {
                 RegBtn.IsEnabled = false;
                 PassTb2.Background = Brushes.LightCoral;
@@ -90,7 +98,7 @@ namespace CreatureMonster.View.AuthRegWindows
 
             var q = openFileDialog.FileName;
             fot = File.ReadAllBytes(q);
-            
+
         }
     }
 }

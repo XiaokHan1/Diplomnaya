@@ -9,5 +9,6 @@ namespace CreatureMonster.Helpers
     public class BD
     {
         public static Models.user24Entities user = new Models.user24Entities();
+        public static Models.Authorization authorization;
     }
 }

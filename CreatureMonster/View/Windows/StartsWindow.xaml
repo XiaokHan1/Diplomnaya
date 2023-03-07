@@ -28,7 +28,6 @@
             </Grid.ColumnDefinitions>
 
             <Button Width="129" Click="Button_Click_2" Name="Btn1" Background="Transparent">
-                
                 <Image Source="{Binding Photo}"/>
             </Button>
             <StackPanel Grid.Column="1" Margin="4">
@@ -41,7 +40,7 @@
         <Grid Grid.Column="1">
             <Button Style="{StaticResource btnBlue}" HorizontalAlignment="Right" Margin="20" Width="240" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/1626321301_25-kartinkin-com-p-anime-paren-sumasshedshii-anime-krasivo-30.jpg" Width="70"/>
+                    <Image Source="{Binding Photo}" Width="70"/>
                     <TextBlock Text="Выйти" Margin="20 0 0 0"/>
                 </StackPanel>
             </Button>

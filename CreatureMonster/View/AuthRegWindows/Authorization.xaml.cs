@@ -44,6 +44,7 @@ namespace CreatureMonster.View.AuthRegWindows
             }
             else
             {
+                Helpers.BD.authorization = qwe;
                 Windows.StartsWindow starts = new Windows.StartsWindow();
                 starts.Show();
                 Close();

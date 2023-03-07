@@ -22,8 +22,7 @@ namespace CreatureMonster.View.Windows
         public StartsWindow()
         {
             InitializeComponent();
-            Text1.DataContext = Helpers.BD.user.Authorization.ToList();
-            Text2.DataContext = Helpers.BD.user.Authorization.ToList();
+           
 
             //Cmb1.SelectedValuePath= "Id";
             //Cmb1.DisplayMemberPath = "Name";
@@ -40,8 +39,9 @@ namespace CreatureMonster.View.Windows
             Cmb3.SelectedValuePath = "Id";
             Cmb3.DisplayMemberPath = "Name";
             Cmb3.ItemsSource = Helpers.BD.user.Legs.ToList();
+            this.DataContext = Helpers.BD.authorization;
 
-            Btn1.DataContext = Helpers.BD.user.Authorization.ToList();
+            
 
         }
 

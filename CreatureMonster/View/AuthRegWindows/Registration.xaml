@@ -34,9 +34,10 @@
             <Grid>
                 <StackPanel>
                     <TextBlock x:Name="t1" Margin="15 0 0 65" Text="Введите ФИО"/>
-                    <TextBlock x:Name="t2" Margin="15 0 0 65" Text="Придумайте логин"/>
-                    <TextBlock x:Name="t3" Margin="15 0 0 65" Text="Придумайте пароль"/>
-                    <TextBlock x:Name="t4" Margin="15 0 0 65" Text="Подтвердите пароль"/>
+                    <TextBlock x:Name="t2" Margin="15 0 0 0" Text="Придумайте логин"/>
+                    <TextBlock x:Name="t21" Margin="15 0 0 50" Foreground="Red" FontSize="18" Text=""/>
+                    <TextBlock x:Name="t3" Margin="15 0 0 60" Text="Придумайте пароль"/>
+                    <TextBlock x:Name="t4" Margin="15 0 0 60" Text="Подтвердите пароль"/>
                     <TextBlock Margin="15 0 0 65" Text="Добавьте фото"/>
                 </StackPanel>
             </Grid>
@@ -47,7 +48,7 @@
                     <TextBox FontSize="50" VerticalContentAlignment="Center" Name="LogTb" Height="70" Margin="15 0 0 50"/>
                     <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb" Height="70" Margin="15 0 0 50"/>
                     <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb2" Height="70" Margin="15 0 0 50" PasswordChanged="PassTb2_PasswordChanged"/>
-                    <Button Name="Btn" Height="70" Margin="15 0 0 50" FontSize="50" VerticalContentAlignment="Center" Click="Btn_Click"/>
+                    <Button Name="Btn" Height="70" Margin="15 0 0 50" Content="Нажмите чтобы добавить фото" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Click="Btn_Click"/>
                 </StackPanel>
             </Grid>
 
