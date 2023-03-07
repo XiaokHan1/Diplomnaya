@@ -40,9 +40,6 @@ namespace CreatureMonster.View.Windows
             Cmb3.DisplayMemberPath = "Name";
             Cmb3.ItemsSource = Helpers.BD.user.Legs.ToList();
             this.DataContext = Helpers.BD.authorization;
-
-            
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

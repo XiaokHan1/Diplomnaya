@@ -42,13 +42,13 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Margin="0 0 30 0">
                 <StackPanel>
-                    <TextBox FontSize="50" VerticalContentAlignment="Center" Name="FcsTb" Height="70" Margin="15 0 0 50"/>
-                    <TextBox FontSize="50" VerticalContentAlignment="Center" Name="LogTb" Height="70" Margin="15 0 0 50"/>
-                    <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb" Height="70" Margin="15 0 0 50"/>
-                    <PasswordBox FontSize="50" VerticalContentAlignment="Center" Name="PassTb2" Height="70" Margin="15 0 0 50" PasswordChanged="PassTb2_PasswordChanged"/>
-                    <Button Name="Btn" Height="70" Margin="15 0 0 50" Content="Нажмите чтобы добавить фото" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Click="Btn_Click"/>
+                    <TextBox BorderThickness="4" FontSize="50" VerticalContentAlignment="Center" Name="FcsTb" Height="70" Margin="15 0 0 50"/>
+                    <TextBox BorderThickness="4" FontSize="50" VerticalContentAlignment="Center" Name="LogTb" Height="70" Margin="15 0 0 50"/>
+                    <PasswordBox FontSize="50" BorderThickness="4" VerticalContentAlignment="Center" Name="PassTb" Height="70" Margin="15 0 0 50"/>
+                    <PasswordBox FontSize="50" BorderThickness="4" VerticalContentAlignment="Center" Name="PassTb2" Height="70" Margin="15 0 0 50" PasswordChanged="PassTb2_PasswordChanged"/>
+                    <Button Name="Btn" Height="70" Margin="15 0 0 50" BorderThickness="4" Content="Нажмите чтобы добавить фото" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Click="Btn_Click"/>
                 </StackPanel>
             </Grid>
 

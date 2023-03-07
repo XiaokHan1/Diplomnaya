@@ -69,6 +69,7 @@ namespace CreatureMonster.View.AuthRegWindows
             }
             else
             {
+                LogTb.BorderBrush = Brushes.Red;
                 t21.Text = "Придумайте другой логин";
             }
         }

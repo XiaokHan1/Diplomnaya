@@ -8,7 +8,9 @@
       d:DesignHeight="564" d:DesignWidth="1297"
       Title="Page1">
 
-    <Grid>
-        
+    <Grid Background="#FF315B18">
+        <StackPanel Margin="20">
+            <TextBlock TextWrapping="Wrap" Text=""/>
+        </StackPanel>
     </Grid>
 </Page>

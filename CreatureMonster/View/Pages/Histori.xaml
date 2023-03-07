@@ -9,22 +9,13 @@
       Title="Histori">
 
     <Grid Margin="20">
-        <ListView x:Name="Lst" ScrollViewer.CanContentScroll="False">
-            <ListView.Foreground>
-                <SolidColorBrush Color="White" Opacity="0"/>
-            </ListView.Foreground>
-            <ListView.BorderBrush>
-                <SolidColorBrush Color="#FF828790" Opacity="0"/>
-            </ListView.BorderBrush>
-            <ListView.Background>
-                <SolidColorBrush Color="White" Opacity="0"/>
-            </ListView.Background>
+        <ListView x:Name="Lst" ScrollViewer.CanContentScroll="False" Background="#FF315B18">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Body.Name}" Foreground="White"/>
+                                <TextBlock Text="{Binding Body.Name}" Foreground="#FFD4DC2C"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -32,7 +23,7 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Tail.Name}" Foreground="White"/>
+                                <TextBlock Text="{Binding Tail.Name}" Foreground="#FFD4DC2C"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -40,7 +31,7 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Head.Name}" Foreground="White"/>
+                                <TextBlock Text="{Binding Head.Name}" Foreground="#FFD4DC2C"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -48,7 +39,7 @@
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Legs.Name}" Foreground="White"/>
+                                <TextBlock Text="{Binding Legs.Name}" Foreground="#FFD4DC2C"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -56,7 +47,7 @@
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name_creature}" Foreground="White"/>
+                                <TextBlock Text="{Binding Name_creature}" Foreground="#FFD4DC2C"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
