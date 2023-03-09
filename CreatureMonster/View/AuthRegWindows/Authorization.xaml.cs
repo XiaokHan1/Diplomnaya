@@ -24,11 +24,11 @@ namespace CreatureMonster.View.AuthRegWindows
         public Authorization()
         {
             InitializeComponent();
-            DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.From = 500;
-            doubleAnimation.To = 1000;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(1);
-            win.BeginAnimation(Window.HeightProperty, doubleAnimation);
+            //DoubleAnimation doubleAnimation = new DoubleAnimation();
+            //doubleAnimation.From = 150;
+            //doubleAnimation.To = 900;
+            //doubleAnimation.Duration = TimeSpan.FromSeconds(3);
+            //win.BeginAnimation(Window.HeightProperty, doubleAnimation);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CreatureMonster.View.AuthRegWindows"
         mc:Ignorable="d"
-        Title="Authorization" Height="900" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" Name="win">
+        Title="Authorization" Height="900" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="None" Name="win">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
