@@ -28,7 +28,7 @@ namespace CreatureMonster.View.AuthRegWindows
             doubleAnimation.From = 500;
             doubleAnimation.To = 1000;
             doubleAnimation.Duration = TimeSpan.FromSeconds(1);
-            win.BeginAnimation(Window.WidthProperty, doubleAnimation);
+            win.BeginAnimation(Window.HeightProperty, doubleAnimation);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
