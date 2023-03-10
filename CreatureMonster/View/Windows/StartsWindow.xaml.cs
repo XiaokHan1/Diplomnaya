@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CreatureMonster.View.Windows
 {
@@ -22,10 +23,14 @@ namespace CreatureMonster.View.Windows
         public StartsWindow()
         {
             InitializeComponent();
-           
 
-            //Cmb1.SelectedValuePath= "Id";
-            //Cmb1.DisplayMemberPath = "Name";
+            var timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.IsEnabled = true;
+            timer.Tick += (o, e) => { TimeT.Content = DateTime.Now.ToString("HH:mm:ss"); };
+            timer.Tick += (o, e) => { TimeY.Content = DateTime.Now.ToString("dd MMMM yyyy"); };
+            timer.Start();
+
             Cmb1.ItemsSource = Helpers.BD.user.Body.ToList();
 
             Cmb4.SelectedValuePath = "Id";
@@ -40,6 +45,11 @@ namespace CreatureMonster.View.Windows
             Cmb3.DisplayMemberPath = "Name";
             Cmb3.ItemsSource = Helpers.BD.user.Legs.ToList();
             this.DataContext = Helpers.BD.authorization;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
