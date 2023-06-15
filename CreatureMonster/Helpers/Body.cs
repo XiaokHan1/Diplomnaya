@@ -7,23 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreatureMonster.Models
+namespace CreatureMonster.Helpers
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Authorization
+    public partial class Body
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Authorization()
+        public Body()
         {
             this.Creature = new HashSet<Creature>();
         }
     
         public int Id { get; set; }
-        public string FCs { get; set; }
-        public string Nickname { get; set; }
-        public string Password { get; set; }
+        public string Name { get; set; }
         public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

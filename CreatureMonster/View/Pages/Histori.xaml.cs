@@ -23,7 +23,7 @@ namespace CreatureMonster.View.Pages
         public Histori()
         {
             InitializeComponent();
-            Lst.ItemsSource = Helpers.BD.user.Creature.ToList();
+            Lst.ItemsSource = Helpers.BD.entities.Creature.ToList();
         }
     }
 }

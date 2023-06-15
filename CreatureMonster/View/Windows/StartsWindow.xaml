@@ -31,7 +31,7 @@
                 <Image Source="{Binding Photo}"/>
             </Button>
             <StackPanel Grid.Column="1" Margin="4">
-                <TextBlock Name="Text1" FontSize="22" Text="{Binding Nickname}" Foreground="White"/>
+                <TextBlock Name="Text1" FontSize="22" Text="{Binding Nikname}" Foreground="White"/>
                 <TextBlock Height="20"/>
                 <TextBlock Name="Text2" FontSize="22" Text="{Binding FCs}" Foreground="White"/>
             </StackPanel>
@@ -62,7 +62,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock FontSize="35" Foreground="White" Text="Выберите тело"/>
-            <ComboBox x:Name="Cmb1" Width="280" Margin="0 10 0 30" Height="60">
+            <ComboBox x:Name="Cmb1" Width="280" Margin="0 10 0 30" Height="60" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -74,13 +74,13 @@
             </ComboBox>
 
             <TextBlock FontSize="35" Foreground="White" Text="Выберите хвост"/>
-            <ComboBox x:Name="Cmb4" Width="280" Margin="0 10 0 30" Height="60"/>
+            <ComboBox x:Name="Cmb4" Width="280" Margin="0 10 0 30" Height="60" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
             <TextBlock FontSize="35" Foreground="White" Text="Выберите голову"/>
-            <ComboBox x:Name="Cmb2" Width="280" Margin="0 10 0 30" Height="60"/>
+            <ComboBox x:Name="Cmb2" Width="280" Margin="0 10 0 30" Height="60" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
             <TextBlock FontSize="35" Foreground="White" Text="Выберите ноги"/>
-            <ComboBox x:Name="Cmb3" Width="280" Margin="0 10 0 40" Height="60"/>
+            <ComboBox x:Name="Cmb3" Width="280" Margin="0 10 0 40" Height="60" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
             <TextBlock x:Name="t1" Text="Придумайте имя" Foreground="White" FontSize="35"/>
             <TextBox x:Name="NameTb" Height="60" FontSize="35" HorizontalContentAlignment="Center"/>

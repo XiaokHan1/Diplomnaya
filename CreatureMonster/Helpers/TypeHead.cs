@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreatureMonster.Models
+namespace CreatureMonster.Helpers
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Legs
+    public partial class TypeHead
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Legs()
+        public TypeHead()
         {
-            this.Creature = new HashSet<Creature>();
+            this.Head = new HashSet<Head>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public byte[] Photo { get; set; }
-        public int IdType_legs { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Creature> Creature { get; set; }
-        public virtual Type_legs Type_legs { get; set; }
+        public virtual ICollection<Head> Head { get; set; }
     }
 }

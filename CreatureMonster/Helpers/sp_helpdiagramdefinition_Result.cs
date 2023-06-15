@@ -7,23 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreatureMonster.Models
+namespace CreatureMonster.Helpers
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Type_tail
+    public partial class sp_helpdiagramdefinition_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Type_tail()
-        {
-            this.Tail = new HashSet<Tail>();
-        }
-    
-        public int Id { get; set; }
-        public string Type { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tail> Tail { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

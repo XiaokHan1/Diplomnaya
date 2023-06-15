@@ -27,7 +27,7 @@ namespace CreatureMonster.View.AuthRegWindows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var q = Helpers.BD.user.Authorization.Where(i => i.Password == PassTb.Text).FirstOrDefault();
+            var q = Helpers.BD.entities.Authorization.Where(i => i.Password == PassTb.Text).FirstOrDefault();
             if(q == null)
             {
                 t1.Text = "Старый пароль неверный";
@@ -36,17 +36,17 @@ namespace CreatureMonster.View.AuthRegWindows
             {
                 if (NewPassTb.Password == NewPassTb2.Password)
                 {
-                    Helpers.BD.user.Authorization.Remove(q);
-                    Helpers.BD.user.SaveChanges();
-                    Models.Authorization authorization = new Models.Authorization()
+                    Helpers.BD.entities.Authorization.Remove(q);
+                    Helpers.BD.entities.SaveChanges();
+                    Helpers.Authorization authorization = new Helpers.Authorization()
                     {
                         FCs = "HanXiaok",
-                        Nickname = "Han",
+                        Nikname = "Han",
                         Password = NewPassTb.Password,
                         Photo = null
                     };
-                    Helpers.BD.user.Authorization.Add(authorization);
-                    Helpers.BD.user.SaveChanges();
+                    Helpers.BD.entities.Authorization.Add(authorization);
+                    Helpers.BD.entities.SaveChanges();
                 }
             }
         }

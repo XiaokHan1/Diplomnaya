@@ -7,26 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreatureMonster.Models
+namespace CreatureMonster.Helpers
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Creature
+    public partial class Authorization
     {
-        public int Id { get; set; }
-        public int Id_body { get; set; }
-        public int Id_tail { get; set; }
-        public int Id_head { get; set; }
-        public int Id_legs { get; set; }
-        public string Name_creature { get; set; }
-        public byte[] Photo { get; set; }
-        public int Id_authorization { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Authorization()
+        {
+            this.Creature = new HashSet<Creature>();
+        }
     
-        public virtual Authorization Authorization { get; set; }
-        public virtual Body Body { get; set; }
-        public virtual Head Head { get; set; }
-        public virtual Legs Legs { get; set; }
-        public virtual Tail Tail { get; set; }
+        public int Id { get; set; }
+        public string FCs { get; set; }
+        public string Nikname { get; set; }
+        public string Password { get; set; }
+        public byte[] Photo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Creature> Creature { get; set; }
     }
 }

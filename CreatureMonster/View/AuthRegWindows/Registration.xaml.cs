@@ -51,18 +51,18 @@ namespace CreatureMonster.View.AuthRegWindows
                 return;
             }
 
-            var q = Helpers.BD.user.Authorization.Where(i => i.Nickname == LogTb.Text).FirstOrDefault();
+            var q = Helpers.BD.entities.Authorization.Where(i => i.Nikname == LogTb.Text).FirstOrDefault();
             if (q == null)
             {
-                Models.Authorization authorization = new Models.Authorization()
+                Helpers.Authorization authorization = new Helpers.Authorization()
                 {
                     FCs = FcsTb.Text,
-                    Nickname = LogTb.Text,
+                    Nikname = LogTb.Text,
                     Password = PassTb.Password,
                     Photo = fot
                 };
-                Helpers.BD.user.Authorization.Add(authorization);
-                Helpers.BD.user.SaveChanges();
+                Helpers.BD.entities.Authorization.Add(authorization);
+                Helpers.BD.entities.SaveChanges();
                 AuthRegWindows.Authorization authorization1 = new Authorization();
                 authorization1.Show();
                 Close();

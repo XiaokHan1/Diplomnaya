@@ -26,7 +26,7 @@ namespace CreatureMonster.View.AuthRegWindows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var a = Helpers.BD.user.Authorization.Where(i => i.FCs == NameTb.Text && i.Nickname == NickTb.Text).FirstOrDefault();
+            var a = Helpers.BD.entities.Authorization.Where(i => i.FCs == NameTb.Text && i.Nikname == NickTb.Text).FirstOrDefault();
             if(a == null)
             {
                 t1.Text = "Проверьте данные*";

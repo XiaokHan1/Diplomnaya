@@ -31,20 +31,20 @@ namespace CreatureMonster.View.Windows
             timer.Tick += (o, e) => { TimeY.Content = DateTime.Now.ToString("dd MMMM yyyy"); };
             timer.Start();
 
-            Cmb1.ItemsSource = Helpers.BD.user.Body.ToList();
+            Cmb1.ItemsSource = Helpers.BD.entities.Body.ToList();
 
             Cmb4.SelectedValuePath = "Id";
             Cmb4.DisplayMemberPath = "Name";
-            Cmb4.ItemsSource = Helpers.BD.user.Tail.ToList();
+            Cmb4.ItemsSource = Helpers.BD.entities.Tail.ToList();
 
             Cmb2.SelectedValuePath = "Id";
             Cmb2.DisplayMemberPath = "Name";
-            Cmb2.ItemsSource = Helpers.BD.user.Head.ToList();
+            Cmb2.ItemsSource = Helpers.BD.entities.Head.ToList();
 
             Cmb3.SelectedValuePath = "Id";
             Cmb3.DisplayMemberPath = "Name";
-            Cmb3.ItemsSource = Helpers.BD.user.Legs.ToList();
-            this.DataContext = Helpers.BD.authorization;
+            Cmb3.ItemsSource = Helpers.BD.entities.Legs.ToList();
+            this.DataContext = Helpers.BD.Authorization;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -70,17 +70,17 @@ namespace CreatureMonster.View.Windows
                 mes = "";
                 return;
             }
-            Models.Creature creature = new Models.Creature()
+            Helpers.Creature creature = new Helpers.Creature()
             {
-                Body = Cmb1.SelectedItem as Models.Body,
-                Tail = Cmb4.SelectedItem as Models.Tail,
-                Head = Cmb2.SelectedItem as Models.Head,
-                Legs = Cmb3.SelectedItem as Models.Legs,
+                Body = Cmb1.SelectedItem as Helpers.Body,
+                Tail = Cmb4.SelectedItem as Helpers.Tail,
+                Head = Cmb2.SelectedItem as Helpers.Head,
+                Legs = Cmb3.SelectedItem as Helpers.Legs,
                 Name_creature = NameTb.Text,
                 Id_authorization = 4
             };
-            Helpers.BD.user.Creature.Add(creature);
-            Helpers.BD.user.SaveChanges();
+            Helpers.BD.entities.Creature.Add(creature);
+            Helpers.BD.entities.SaveChanges();
             MessageBox.Show("Yes");
         }
 

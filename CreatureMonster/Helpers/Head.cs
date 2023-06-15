@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreatureMonster.Models
+namespace CreatureMonster.Helpers
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Tail
+    public partial class Head
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tail()
+        public Head()
         {
             this.Creature = new HashSet<Creature>();
         }
@@ -23,10 +23,10 @@ namespace CreatureMonster.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public byte[] Photo { get; set; }
-        public int IdType_tail { get; set; }
+        public int IdType_head { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Creature> Creature { get; set; }
-        public virtual Type_tail Type_tail { get; set; }
+        public virtual TypeHead TypeHead { get; set; }
     }
 }

@@ -24,16 +24,11 @@ namespace CreatureMonster.View.AuthRegWindows
         public Authorization()
         {
             InitializeComponent();
-            //DoubleAnimation doubleAnimation = new DoubleAnimation();
-            //doubleAnimation.From = 150;
-            //doubleAnimation.To = 900;
-            //doubleAnimation.Duration = TimeSpan.FromSeconds(3);
-            //win.BeginAnimation(Window.HeightProperty, doubleAnimation);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var qwe = Helpers.BD.user.Authorization.Where(i => i.Nickname == LogTb.Text && i.Password == PassTb.Password).FirstOrDefault();
+            var qwe = Helpers.BD.entities.Authorization.Where(i => i.Nikname == LogTb.Text && i.Password == PassTb.Password).FirstOrDefault();
             if (qwe == null)
             {
                 t1.Text = "Введите логин*";
@@ -44,7 +39,7 @@ namespace CreatureMonster.View.AuthRegWindows
             }
             else
             {
-                Helpers.BD.authorization = qwe;
+                Helpers.BD.Authorization = qwe;
                 Windows.StartsWindow starts = new Windows.StartsWindow();
                 starts.Show();
                 Close();
